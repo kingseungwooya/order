@@ -12,7 +12,8 @@ public class OrderTester {
         var orderItems = new ArrayList<OrderItem>() {{
             add(new OrderItem(UUID.randomUUID(), 100L, 1));
         }};
-        var order = new Order(UUID.randomUUID(), customerID, orderItems, 10L);
+        Voucher fixedAmountVoucher = new FixedAmountVoucher(UUID.randomUUID(), 10L);
+        var order = new Order(UUID.randomUUID(), customerID, orderItems, fixedAmountVoucher);
 
         Assert.isTrue(order.totalAmount() == 90L,
                 MessageFormat.format("totalAmount {0} is not 90L", order.totalAmount()));

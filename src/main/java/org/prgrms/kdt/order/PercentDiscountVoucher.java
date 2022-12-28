@@ -2,13 +2,13 @@ package org.prgrms.kdt.order;
 
 import java.util.UUID;
 
-public class FixedAmountVoucher implements Voucher{
+public class PercentDiscountVoucher implements Voucher {
     private final UUID voucherId;
-    private final long amount;
+    private final long percent;
 
-    public FixedAmountVoucher(UUID voucherId, long amount) {
+    public PercentDiscountVoucher(UUID voucherId, long percent) {
         this.voucherId = voucherId;
-        this.amount = amount;
+        this.percent = percent;
     }
 
     @Override
@@ -16,8 +16,8 @@ public class FixedAmountVoucher implements Voucher{
         return voucherId;
     }
 
+    @Override
     public long discount(long beforeDiscount) {
-        return beforeDiscount - amount;
+        return beforeDiscount * (percent / 100);
     }
-
 }
