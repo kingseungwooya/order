@@ -1,5 +1,8 @@
 package org.prgrms.kdt.order;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
 import java.util.Optional;
 import java.util.UUID;
 
@@ -7,8 +10,14 @@ import java.util.UUID;
  * VoucherService, Repository , OrderService, Repository 생성에 대한 책임을 맡게된다.
  * 각각의 Service와 Repository간의 의존관계를 맺는 역할을 담당. 컴포넌트 생성을 위한 메서드들이 있다.
  */
-public class OrderContext {
 
+/**
+ * Configuration을 통해 이 클래스는 Bean의 도면 역할을 한다고 지정해줌.
+ */
+@Configuration
+public class AppConfiguration {
+
+    @Bean
     public VoucherRepository voucherRepository() {
         return new VoucherRepository() {
             @Override
@@ -18,6 +27,7 @@ public class OrderContext {
         };
     }
 
+    @Bean
     public OrderRepository orderRepository() {
         return new OrderRepository() {
             @Override
@@ -26,11 +36,11 @@ public class OrderContext {
             }
         };
     }
-
+    @Bean
     public VoucherService voucherService() {
         return new VoucherService(voucherRepository());
     }
-
+    @Bean
     public OrderService orderService() {
         return new OrderService(voucherService(), orderRepository());
     }
