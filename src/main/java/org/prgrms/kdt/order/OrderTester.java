@@ -9,14 +9,14 @@ import java.util.UUID;
 public class OrderTester {
     public static void main(String[] args) {
         var customerID = UUID.randomUUID();
+        var orderContext = new OrderContext();
+        var orderService = orderContext.orderService();
         var orderItems = new ArrayList<OrderItem>() {{
             add(new OrderItem(UUID.randomUUID(), 100L, 1));
         }};
-        Voucher fixedAmountVoucher = new FixedAmountVoucher(UUID.randomUUID(), 10L);
-        var order = new Order(UUID.randomUUID(), customerID, orderItems, fixedAmountVoucher);
+        var order = orderService.createOrder(customerID, orderItems);
+        Assert.isTrue(order.totalAmount() == 100L, MessageFormat.format("totalAmount {0} is not 100L", order.totalAmount()));
 
-        Assert.isTrue(order.totalAmount() == 90L,
-                MessageFormat.format("totalAmount {0} is not 90L", order.totalAmount()));
 
     }
 }
