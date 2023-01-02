@@ -19,6 +19,11 @@ public class OrderTester {
         var applicationContext = new AnnotationConfigApplicationContext(AppConfiguration.class);
         var orderService = applicationContext.getBean(OrderService.class); // MetaData에 등록된 Bean을 갖고온다.
 
+        // property 가져와보기
+        var environment = applicationContext.getEnvironment();
+        var version = environment.getProperty("kdt.version");
+        var minimumOrderAmount = environment.getProperty("kdt.minimum-order-amount");
+
         var customerID = UUID.randomUUID();
         // 이렇게 사용할 시 구현체가 두개이기 때문에 어떤것을 Bean으로 갖고와야할지 모른다.
         // var voucherRepo = applicationContext.getBean(VoucherRepository.class);
