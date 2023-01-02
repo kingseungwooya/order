@@ -2,6 +2,7 @@ package org.prgrms.kdt;
 
 import org.prgrms.kdt.order.Order;
 import org.prgrms.kdt.voucher.Voucher;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +23,21 @@ import java.util.UUID;
 @ComponentScan(basePackageClasses = {Order.class, Voucher.class},
         excludeFilters = {@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = {CircularConfig.class})}) // basePackegesClass를 이용해 해당 클래스가 속해있는 패키지만 참조한다. .
 public class AppConfiguration {
+    @Bean(initMethod = "init")
+    public BeanOne beanOne() {
+        return new BeanOne();
+    }
 
+}
 
+class BeanOne implements InitializingBean {
+
+    public void init() {
+        System.out.println("[BeanOne] init called");
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("[BeanOne] afterPropertiesSet called");
+    }
 }

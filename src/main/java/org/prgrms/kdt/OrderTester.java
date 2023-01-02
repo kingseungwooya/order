@@ -36,6 +36,6 @@ public class OrderTester {
         var order = orderService.createOrder(customerID, orderItems, voucher.getVoucherId());
         Assert.isTrue(order.totalAmount() == 90L, MessageFormat.format("totalAmount {0} is not 100L", order.totalAmount()));
 
-
+        applicationContext.close();
     }
 }
