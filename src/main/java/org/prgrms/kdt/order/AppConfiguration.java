@@ -1,6 +1,7 @@
 package org.prgrms.kdt.order;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Optional;
@@ -15,6 +16,7 @@ import java.util.UUID;
  * Configuration을 통해 이 클래스는 Bean의 도면 역할을 한다고 지정해줌.
  */
 @Configuration
+@ComponentScan
 public class AppConfiguration {
 
     @Bean
@@ -35,13 +37,5 @@ public class AppConfiguration {
 
             }
         };
-    }
-    @Bean
-    public VoucherService voucherService(VoucherRepository voucherRepository) {
-        return new VoucherService(voucherRepository);
-    }
-    @Bean
-    public OrderService orderService(VoucherService voucherService, OrderRepository orderRepository) {
-        return new OrderService(voucherService, orderRepository);
     }
 }
