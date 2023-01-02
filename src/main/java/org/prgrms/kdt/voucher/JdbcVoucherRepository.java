@@ -9,8 +9,8 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Repository
-@Qualifier("memory")
-public class MemoryVoucherRepository implements VoucherRepository {
+@Qualifier("jdbc")
+public class JdbcVoucherRepository implements VoucherRepository {
     // select 시 데이터가 없을 수도 있음을 항상 생각하고 Optional을 사용하자.
 
     private final Map<UUID, Voucher> storage = new ConcurrentHashMap<>();
