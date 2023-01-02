@@ -1,4 +1,4 @@
-package org.prgrms.kdt.order;
+package org.prgrms.kdt.voucher;
 
 import org.springframework.stereotype.Repository;
 

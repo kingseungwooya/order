@@ -1,9 +1,13 @@
-package org.prgrms.kdt.order;
+package org.prgrms.kdt;
 
+import org.prgrms.kdt.AppConfiguration;
+import org.prgrms.kdt.order.OrderItem;
+import org.prgrms.kdt.order.OrderService;
+import org.prgrms.kdt.voucher.FixedAmountVoucher;
+import org.prgrms.kdt.voucher.VoucherRepository;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.util.Assert;
 
-import java.text.Annotation;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.UUID;
