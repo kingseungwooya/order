@@ -24,6 +24,10 @@ public class OrderTester {
         // var voucherRepo = applicationContext.getBean(VoucherRepository.class);
         var voucherRepo = BeanFactoryAnnotationUtils
                 .qualifiedBeanOfType(applicationContext.getBeanFactory(), VoucherRepository.class, "memory");
+        var voucherRepo2 = BeanFactoryAnnotationUtils
+                .qualifiedBeanOfType(applicationContext.getBeanFactory(), VoucherRepository.class, "memory");
+        System.out.println(voucherRepo.equals(voucherRepo2));
+
         var voucher = voucherRepo.insert(new FixedAmountVoucher(UUID.randomUUID(), 10L));
 
         var orderItems = new ArrayList<OrderItem>() {{
