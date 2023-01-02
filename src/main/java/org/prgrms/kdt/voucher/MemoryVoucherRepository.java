@@ -1,6 +1,9 @@
 package org.prgrms.kdt.voucher;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 import java.util.Map;
@@ -10,6 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Repository
 @Qualifier("memory")
+@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class MemoryVoucherRepository implements VoucherRepository {
     // select 시 데이터가 없을 수도 있음을 항상 생각하고 Optional을 사용하자.
 
