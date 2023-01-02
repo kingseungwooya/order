@@ -5,6 +5,7 @@ import org.prgrms.kdt.order.OrderItem;
 import org.prgrms.kdt.order.OrderService;
 import org.prgrms.kdt.voucher.FixedAmountVoucher;
 import org.prgrms.kdt.voucher.VoucherRepository;
+import org.springframework.beans.factory.annotation.BeanFactoryAnnotationUtils;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.util.Assert;
 
@@ -19,7 +20,10 @@ public class OrderTester {
         var orderService = applicationContext.getBean(OrderService.class); // MetaData에 등록된 Bean을 갖고온다.
 
         var customerID = UUID.randomUUID();
-        var voucherRepo = applicationContext.getBean(VoucherRepository.class);
+        // 이렇게 사용할 시 구현체가 두개이기 때문에 어떤것을 Bean으로 갖고와야할지 모른다.
+        // var voucherRepo = applicationContext.getBean(VoucherRepository.class);
+        var voucherRepo = BeanFactoryAnnotationUtils
+                .qualifiedBeanOfType(applicationContext.getBeanFactory(), VoucherRepository.class, "memory");
         var voucher = voucherRepo.insert(new FixedAmountVoucher(UUID.randomUUID(), 10L));
 
         var orderItems = new ArrayList<OrderItem>() {{
