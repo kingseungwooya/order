@@ -19,23 +19,5 @@ import java.util.UUID;
 @ComponentScan
 public class AppConfiguration {
 
-    @Bean
-    public VoucherRepository voucherRepository() {
-        return new VoucherRepository() {
-            @Override
-            public Optional<Voucher> findById(UUID voucherId) {
-                return Optional.empty();
-            }
-        };
-    }
 
-    @Bean
-    public OrderRepository orderRepository() {
-        return new OrderRepository() {
-            @Override
-            public void insert(Order order) {
-
-            }
-        };
-    }
 }

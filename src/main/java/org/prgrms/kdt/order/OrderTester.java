@@ -15,12 +15,14 @@ public class OrderTester {
         var orderService = applicationContext.getBean(OrderService.class); // MetaData에 등록된 Bean을 갖고온다.
 
         var customerID = UUID.randomUUID();
-        var orderContext = new AppConfiguration();
+        var voucherRepo = applicationContext.getBean(VoucherRepository.class);
+        var voucher = voucherRepo.insert(new FixedAmountVoucher(UUID.randomUUID(), 10L));
+
         var orderItems = new ArrayList<OrderItem>() {{
             add(new OrderItem(UUID.randomUUID(), 100L, 1));
         }};
-        var order = orderService.createOrder(customerID, orderItems);
-        Assert.isTrue(order.totalAmount() == 100L, MessageFormat.format("totalAmount {0} is not 100L", order.totalAmount()));
+        var order = orderService.createOrder(customerID, orderItems, voucher.getVoucherId());
+        Assert.isTrue(order.totalAmount() == 90L, MessageFormat.format("totalAmount {0} is not 100L", order.totalAmount()));
 
 
     }
