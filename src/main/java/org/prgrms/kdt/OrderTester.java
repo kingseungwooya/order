@@ -11,6 +11,7 @@ import org.springframework.util.Assert;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class OrderTester {
@@ -22,7 +23,11 @@ public class OrderTester {
         // property 가져와보기
         var environment = applicationContext.getEnvironment();
         var version = environment.getProperty("kdt.version");
-        var minimumOrderAmount = environment.getProperty("kdt.minimum-order-amount");
+        var minimumOrderAmount = environment.getProperty("kdt.minimum-order-amount" , Integer.class);
+        var supportVendors = environment.getProperty("kdt.support-vendors", List.class);
+        System.out.println(MessageFormat.format("version -> {0}", version));
+        System.out.println(MessageFormat.format("minimumOrderAmount -> {0}", minimumOrderAmount));
+        System.out.println(MessageFormat.format("supportVendors -> {0}", supportVendors));
 
         var customerID = UUID.randomUUID();
         // 이렇게 사용할 시 구현체가 두개이기 때문에 어떤것을 Bean으로 갖고와야할지 모른다.

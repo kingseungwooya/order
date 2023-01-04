@@ -1,12 +1,10 @@
 package org.prgrms.kdt;
 
+import org.prgrms.kdt.configuration.VersionProvider;
 import org.prgrms.kdt.order.Order;
 import org.prgrms.kdt.voucher.Voucher;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.FilterType;
+import org.springframework.context.annotation.*;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -20,8 +18,9 @@ import java.util.UUID;
  * Configuration을 통해 이 클래스는 Bean의 도면 역할을 한다고 지정해줌.
  */
 @Configuration
-@ComponentScan(basePackageClasses = {Order.class, Voucher.class},
-        excludeFilters = {@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = {CircularConfig.class})}) // basePackegesClass를 이용해 해당 클래스가 속해있는 패키지만 참조한다. .
+@ComponentScan(basePackageClasses = {Order.class, Voucher.class, VersionProvider.class})
+       // excludeFilters = {@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = {CircularConfig.class})}) // basePackegesClass를 이용해 해당 클래스가 속해있는 패키지만 참조한다. .
+@PropertySource("application.properties")
 public class AppConfiguration {
     @Bean(initMethod = "init")
     public BeanOne beanOne() {
