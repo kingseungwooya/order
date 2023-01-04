@@ -2,23 +2,23 @@ package org.prgrms.kdt.order;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.text.MessageFormat;
 import java.util.List;
 
-@Component
+@Configuration
+@ConfigurationProperties(prefix = "kdt")
 public class OrderProperties implements InitializingBean {
 
-    @Value("${kdt.version}")
     private String version;
 
-    @Value("${kdt.minimum-order-amount}")
-    private String minimumOrderMount;
+    private String minimumOrderAmount;
 
-    @Value("${kdt.support-vendors} ")
-    private List<String> supportVenders;
+    private List<String> supportVendors;
 
     @Value("${JAVA_HOME}")
     private String javaHome;
@@ -26,8 +26,32 @@ public class OrderProperties implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println(MessageFormat.format(" [OrderProperties]  -> {0} ", version));
-        System.out.println(MessageFormat.format(" [OrderProperties]  -> {0} ", minimumOrderMount));
-        System.out.println(MessageFormat.format(" [OrderProperties]  -> {0} ", supportVenders));
+        System.out.println(MessageFormat.format(" [OrderProperties]  -> {0} ", minimumOrderAmount));
+        System.out.println(MessageFormat.format(" [OrderProperties]  -> {0} ", supportVendors));
         System.out.println(MessageFormat.format(" [OrderProperties]  -> {0} ", javaHome));
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public String getMinimumOrderAmount() {
+        return minimumOrderAmount;
+    }
+
+    public void setMinimumOrderAmount(String minimumOrderAmount) {
+        this.minimumOrderAmount = minimumOrderAmount;
+    }
+
+    public List<String> getSupportVendors() {
+        return supportVendors;
+    }
+
+    public void setSupportVendors(List<String> supportVendors) {
+        this.supportVendors = supportVendors;
     }
 }

@@ -1,7 +1,7 @@
 kdt:
   version: "v1.0"
   minimum-order-amount: 1
-  support_vendors:
+  support-vendors:
     - a
     - b
     - c

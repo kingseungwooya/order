@@ -1,13 +1,12 @@
 package org.prgrms.kdt;
 
 import org.prgrms.kdt.configuration.VersionProvider;
+import org.prgrms.kdt.configuration.YamlPropertiesFactory;
 import org.prgrms.kdt.order.Order;
 import org.prgrms.kdt.voucher.Voucher;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
-
-import java.util.Optional;
-import java.util.UUID;
 
 /**  ioc container !!! 객체들간의 의존관계뿐만 아니라 생성과 파괴 모두 다 이루어진다.
  * VoucherService, Repository , OrderService, Repository 생성에 대한 책임을 맡게된다.
@@ -20,7 +19,8 @@ import java.util.UUID;
 @Configuration
 @ComponentScan(basePackageClasses = {Order.class, Voucher.class, VersionProvider.class})
        // excludeFilters = {@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = {CircularConfig.class})}) // basePackegesClass를 이용해 해당 클래스가 속해있는 패키지만 참조한다. .
-@PropertySource("application.properties")
+@PropertySource(value = "application.yaml", factory = YamlPropertiesFactory.class)
+@EnableConfigurationProperties
 public class AppConfiguration {
     @Bean(initMethod = "init")
     public BeanOne beanOne() {

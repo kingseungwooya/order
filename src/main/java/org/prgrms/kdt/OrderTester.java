@@ -25,6 +25,7 @@ public class OrderTester {
         var version = environment.getProperty("kdt.version");
         var minimumOrderAmount = environment.getProperty("kdt.minimum-order-amount" , Integer.class);
         var supportVendors = environment.getProperty("kdt.support-vendors", List.class);
+        var description = environment.getProperty("kdt.description");
         System.out.println(MessageFormat.format("version -> {0}", version));
         System.out.println(MessageFormat.format("minimumOrderAmount -> {0}", minimumOrderAmount));
         System.out.println(MessageFormat.format("supportVendors -> {0}", supportVendors));
