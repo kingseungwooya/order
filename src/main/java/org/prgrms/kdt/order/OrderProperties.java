@@ -20,15 +20,15 @@ public class OrderProperties implements InitializingBean {
 
     private List<String> supportVendors;
 
-    @Value("${JAVA_HOME}")
-    private String javaHome;
+    private String description;
+
 
     @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println(MessageFormat.format(" [OrderProperties]  -> {0} ", version));
         System.out.println(MessageFormat.format(" [OrderProperties]  -> {0} ", minimumOrderAmount));
         System.out.println(MessageFormat.format(" [OrderProperties]  -> {0} ", supportVendors));
-        System.out.println(MessageFormat.format(" [OrderProperties]  -> {0} ", javaHome));
+        System.out.println(MessageFormat.format(" [OrderProperties]  -> {0} ", description));
     }
 
     public String getVersion() {
@@ -53,5 +53,13 @@ public class OrderProperties implements InitializingBean {
 
     public void setSupportVendors(List<String> supportVendors) {
         this.supportVendors = supportVendors;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

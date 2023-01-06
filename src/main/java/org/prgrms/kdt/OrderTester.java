@@ -2,6 +2,7 @@ package org.prgrms.kdt;
 
 import org.prgrms.kdt.AppConfiguration;
 import org.prgrms.kdt.order.OrderItem;
+import org.prgrms.kdt.order.OrderProperties;
 import org.prgrms.kdt.order.OrderService;
 import org.prgrms.kdt.voucher.FixedAmountVoucher;
 import org.prgrms.kdt.voucher.JdbcVoucherRepository;
@@ -22,25 +23,26 @@ public class OrderTester {
     private static final Logger logger = LoggerFactory.getLogger(OrderTester.class);
     public static void main(String[] args) {
         // Configuration Metadata를 java 기반으로~
-        var applicationContext = new AnnotationConfigApplicationContext(AppConfiguration.class);
+        var applicationContext = new AnnotationConfigApplicationContext();
         applicationContext.register(AppConfiguration.class);
         var environment = applicationContext.getEnvironment();
-        environment.setActiveProfiles("dev");
+        environment.setActiveProfiles("local");
         applicationContext.refresh();
 
         // property 가져와보기
         /*
         var version = environment.getProperty("kdt.version");
         var minimumOrderAmount = environment.getProperty("kdt.minimum-order-amount" , Integer.class);
-        var supportVendors = environment.getProperty("kdt.support-vendors", List.class);
-        var description = environment.getProperty("kdt.description");
-        System.out.println(MessageFormat.format("version -> {0}", version));
-        System.out.println(MessageFormat.format("minimumOrderAmount -> {0}", minimumOrderAmount));
-        System.out.println(MessageFormat.format("supportVendors -> {0}", supportVendors));
-        */
+        var supportVendors = environment.getProperty("kdt.support-vendors", List.class);  */
+       // var description = environment.getProperty("kdt.description");
+        var orderProperties = applicationContext.getBean(OrderProperties.class);
+        System.out.println(MessageFormat.format("version -> {0}", orderProperties.getVersion()));
+        System.out.println(MessageFormat.format("minimumOrderAmount -> {0}", orderProperties.getMinimumOrderAmount()));
+        System.out.println(MessageFormat.format("supportVendors -> {0}", orderProperties.getDescription()));
+
         var customerID = UUID.randomUUID();
-        // 이렇게 사용할 시 구현체가 두개이기 때문에 어떤것을 Bean으로 갖고와야할지 모른다.
-         var voucherRepo = applicationContext.getBean(VoucherRepository.class);
+        var voucherRepo = applicationContext.getBean(VoucherRepository.class);
+        var voucher = voucherRepo.insert(new FixedAmountVoucher(UUID.randomUUID(), 10L));
         /*
          var voucherRepo = BeanFactoryAnnotationUtils
                 .qualifiedBeanOfType(applicationContext.getBeanFactory(), VoucherRepository.class, "memory");
@@ -48,7 +50,7 @@ public class OrderTester {
                 .qualifiedBeanOfType(applicationContext.getBeanFactory(), VoucherRepository.class, "memory");
         System.out.println(voucherRepo.equals(voucherRepo2));*/
 
-        var voucher = voucherRepo.insert(new FixedAmountVoucher(UUID.randomUUID(), 10L));
+
         logger.info("logger name => {}", logger.getName());
         logger.info(MessageFormat.format("is Jdbc Repo -> {0}", voucherRepo instanceof JdbcVoucherRepository));
         logger.info(MessageFormat.format("is Jdbc Repo -> {0}", voucherRepo.getClass().getCanonicalName()));

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 import java.util.UUID;
 //
-@Repository
+
 public interface VoucherRepository {
     // select 시 데이터가 없을 수도 있음을 항상 생각하고 Optional을 사용하자.
     Optional<Voucher> findById(UUID voucherId);
