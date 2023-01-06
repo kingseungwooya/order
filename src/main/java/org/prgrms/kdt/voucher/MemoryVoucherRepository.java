@@ -10,7 +10,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Repository
-@Profile("local")
+@Profile({"local","default"})
 public class MemoryVoucherRepository implements VoucherRepository {
     // select 시 데이터가 없을 수도 있음을 항상 생각하고 Optional을 사용하자.
 

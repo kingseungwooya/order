@@ -16,7 +16,7 @@ public class OrderApplication {
 
     public static void main(String[] args) {
         var springApplication = new SpringApplication(OrderApplication.class);
-        springApplication.setAdditionalProfiles("local");
+      //  springApplication.setAdditionalProfiles("local");
 
         var applicationContext =   springApplication.run(args);
         var orderProperties = applicationContext.getBean(OrderProperties.class);
