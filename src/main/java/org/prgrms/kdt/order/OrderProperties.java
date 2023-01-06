@@ -1,5 +1,7 @@
 package org.prgrms.kdt.order;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -14,6 +16,8 @@ import java.util.List;
 @ConfigurationProperties(prefix = "kdt")
 public class OrderProperties implements InitializingBean {
 
+    private static final Logger logger = LoggerFactory.getLogger(OrderProperties.class);
+
     private String version;
 
     private String minimumOrderAmount;
@@ -25,10 +29,10 @@ public class OrderProperties implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        System.out.println(MessageFormat.format(" [OrderProperties]  -> {0} ", version));
-        System.out.println(MessageFormat.format(" [OrderProperties]  -> {0} ", minimumOrderAmount));
-        System.out.println(MessageFormat.format(" [OrderProperties]  -> {0} ", supportVendors));
-        System.out.println(MessageFormat.format(" [OrderProperties]  -> {0} ", description));
+        logger.info(" [OrderProperties]  -> {0} ", version);
+        logger.info(" [OrderProperties]  -> {0} ", minimumOrderAmount);
+        logger.info(" [OrderProperties]  -> {0} ", supportVendors);
+        logger.info(" [OrderProperties]  -> {0} ", description);
     }
 
     public String getVersion() {

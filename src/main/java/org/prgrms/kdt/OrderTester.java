@@ -47,20 +47,20 @@ public class OrderTester {
         var minimumOrderAmount = environment.getProperty("kdt.minimum-order-amount" , Integer.class);
         var supportVendors = environment.getProperty("kdt.support-vendors", List.class);  */
         // var description = environment.getProperty("kdt.description");
-        var resource = applicationContext.getResource("classpath:application.yaml");
-        var resource2 = applicationContext.getResource("file:sample.txt");
-        var resource3 = applicationContext.getResource("https://stackoverflow.com/");
-        System.out.println(MessageFormat.format("Resource -> {0}", resource.getClass().getCanonicalName()));
-        var file = resource.getFile();
-        var strings = Files.readAllLines(file.toPath());
-        System.out.println(strings.stream().reduce("", (a, b) -> a + "\n" + b));
+      //  var resource = applicationContext.getResource("classpath:application.yaml");
+      //  var resource2 = applicationContext.getResource("file:sample.txt");
+      //  var resource3 = applicationContext.getResource("https://stackoverflow.com/");
+      //  System.out.println(MessageFormat.format("Resource -> {0}", resource.getClass().getCanonicalName()));
+      //  var file = resource.getFile();
+      //  var strings = Files.readAllLines(file.toPath());
+      //  System.out.println(strings.stream().reduce("", (a, b) -> a + "\n" + b));
 
         // 외부에서 리소스 가져오기 가져올 때
 
-        var readableByteChannel = Channels.newChannel(resource3.getURL().openStream());
-        var bufferedReader = new BufferedReader(Channels.newReader(readableByteChannel, StandardCharsets.UTF_8));
-        var contents = bufferedReader.lines().collect(Collectors.joining("\n"));
-        System.out.println(contents);
+      //  var readableByteChannel = Channels.newChannel(resource3.getURL().openStream());
+      //  var bufferedReader = new BufferedReader(Channels.newReader(readableByteChannel, StandardCharsets.UTF_8));
+      //  var contents = bufferedReader.lines().collect(Collectors.joining("\n"));
+      //  System.out.println(contents);
 
 
         var customerID = UUID.randomUUID();
