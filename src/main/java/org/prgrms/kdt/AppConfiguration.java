@@ -17,26 +17,13 @@ import org.springframework.context.annotation.*;
  * Configuration을 통해 이 클래스는 Bean의 도면 역할을 한다고 지정해줌.
  */
 @Configuration
-@ComponentScan(basePackageClasses = {Order.class, Voucher.class, VersionProvider.class})
+@ComponentScan(basePackages = {"org.prgrms.kdt.configuration", "org.prgrms.kdt.order", "org.prgrms.kdt.voucher"})
        // excludeFilters = {@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = {CircularConfig.class})}) // basePackegesClass를 이용해 해당 클래스가 속해있는 패키지만 참조한다. .
 @PropertySource(value = "application.yaml", factory = YamlPropertiesFactory.class)
 @EnableConfigurationProperties
 public class AppConfiguration {
-    @Bean(initMethod = "init")
-    public BeanOne beanOne() {
-        return new BeanOne();
-    }
+
 
 }
 
-class BeanOne implements InitializingBean {
 
-    public void init() {
-        System.out.println("[BeanOne] init called");
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        System.out.println("[BeanOne] afterPropertiesSet called");
-    }
-}

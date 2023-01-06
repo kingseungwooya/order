@@ -1,6 +1,6 @@
 package org.prgrms.kdt.voucher;
 
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.util.Map;
@@ -9,7 +9,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Repository
-@Qualifier("jdbc")
+@Profile("dev")
 public class JdbcVoucherRepository implements VoucherRepository {
     // select 시 데이터가 없을 수도 있음을 항상 생각하고 Optional을 사용하자.
 
