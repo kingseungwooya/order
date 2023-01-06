@@ -26,19 +26,19 @@ public class OrderTester {
         var applicationContext = new AnnotationConfigApplicationContext();
         applicationContext.register(AppConfiguration.class);
         var environment = applicationContext.getEnvironment();
-        environment.setActiveProfiles("local");
+        environment.setActiveProfiles("dev");
         applicationContext.refresh();
-
+        var orderProperties = applicationContext.getBean(OrderProperties.class);
+        System.out.println(MessageFormat.format("version -> {0}", orderProperties.getVersion()));
+        System.out.println(MessageFormat.format("minimumOrderAmount -> {0}", orderProperties.getMinimumOrderAmount()));
+        System.out.println(MessageFormat.format("supportVendors -> {0}", orderProperties.getDescription()));
         // property 가져와보기
         /*
         var version = environment.getProperty("kdt.version");
         var minimumOrderAmount = environment.getProperty("kdt.minimum-order-amount" , Integer.class);
         var supportVendors = environment.getProperty("kdt.support-vendors", List.class);  */
        // var description = environment.getProperty("kdt.description");
-        var orderProperties = applicationContext.getBean(OrderProperties.class);
-        System.out.println(MessageFormat.format("version -> {0}", orderProperties.getVersion()));
-        System.out.println(MessageFormat.format("minimumOrderAmount -> {0}", orderProperties.getMinimumOrderAmount()));
-        System.out.println(MessageFormat.format("supportVendors -> {0}", orderProperties.getDescription()));
+
 
         var customerID = UUID.randomUUID();
         var voucherRepo = applicationContext.getBean(VoucherRepository.class);
