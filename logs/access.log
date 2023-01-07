@@ -5,3 +5,17 @@
 17:46:14.747 [main] INFO  org.prgrms.kdt.OrderTester - logger name => org.prgrms.kdt.OrderTester
 17:46:14.748 [main] INFO  org.prgrms.kdt.OrderTester - is Jdbc Repo -> false
 17:46:14.748 [main] INFO  org.prgrms.kdt.OrderTester - is Jdbc Repo -> org.prgrms.kdt.voucher.MemoryVoucherRepository
+%PARSER_ERROR[clr] [main] INFO  o.prgrms.kdt.order.OrderProperties -  [OrderProperties]  -> {0} 
+%PARSER_ERROR[clr] [main] INFO  o.prgrms.kdt.order.OrderProperties -  [OrderProperties]  -> {0} 
+%PARSER_ERROR[clr] [main] INFO  o.prgrms.kdt.order.OrderProperties -  [OrderProperties]  -> {0} 
+%PARSER_ERROR[clr] [main] INFO  o.prgrms.kdt.order.OrderProperties -  [OrderProperties]  -> {0} 
+%PARSER_ERROR[clr] [main] INFO  org.prgrms.kdt.OrderTester - logger name => org.prgrms.kdt.OrderTester
+%PARSER_ERROR[clr] [main] INFO  org.prgrms.kdt.OrderTester - is Jdbc Repo -> false
+%PARSER_ERROR[clr] [main] INFO  org.prgrms.kdt.OrderTester - is Jdbc Repo -> org.prgrms.kdt.voucher.MemoryVoucherRepository
+[2m18:22:02.926[0;39m [main] INFO  o.prgrms.kdt.order.OrderProperties -  [OrderProperties]  -> {0} 
+[2m18:22:02.927[0;39m [main] INFO  o.prgrms.kdt.order.OrderProperties -  [OrderProperties]  -> {0} 
+[2m18:22:02.927[0;39m [main] INFO  o.prgrms.kdt.order.OrderProperties -  [OrderProperties]  -> {0} 
+[2m18:22:02.927[0;39m [main] INFO  o.prgrms.kdt.order.OrderProperties -  [OrderProperties]  -> {0} 
+[2m18:22:02.986[0;39m [main] INFO  org.prgrms.kdt.OrderTester - logger name => org.prgrms.kdt.OrderTester
+[2m18:22:02.987[0;39m [main] INFO  org.prgrms.kdt.OrderTester - is Jdbc Repo -> false
+[2m18:22:02.987[0;39m [main] INFO  org.prgrms.kdt.OrderTester - is Jdbc Repo -> org.prgrms.kdt.voucher.MemoryVoucherRepository
