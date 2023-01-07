@@ -1,0 +1,7 @@
+17:46:14.688 [main] INFO  o.prgrms.kdt.order.OrderProperties -  [OrderProperties]  -> {0} 
+17:46:14.689 [main] INFO  o.prgrms.kdt.order.OrderProperties -  [OrderProperties]  -> {0} 
+17:46:14.689 [main] INFO  o.prgrms.kdt.order.OrderProperties -  [OrderProperties]  -> {0} 
+17:46:14.689 [main] INFO  o.prgrms.kdt.order.OrderProperties -  [OrderProperties]  -> {0} 
+17:46:14.747 [main] INFO  org.prgrms.kdt.OrderTester - logger name => org.prgrms.kdt.OrderTester
+17:46:14.748 [main] INFO  org.prgrms.kdt.OrderTester - is Jdbc Repo -> false
+17:46:14.748 [main] INFO  org.prgrms.kdt.OrderTester - is Jdbc Repo -> org.prgrms.kdt.voucher.MemoryVoucherRepository
