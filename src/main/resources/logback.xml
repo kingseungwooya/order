@@ -1,56 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <!--Conversion 설정하기 -->
-    <conversionRule
-            conversionWord="clr"
-            converterClass ="org.springframework.boot.logging.logback.ColorConverter" />
-
-    <property name="CONSOLE_LOG_PATTERN" value="%clr(%d{HH:mm:ss.SSS}){cyan} [%thread] %clr(%-5level) %logger{36} - %msg%n"  />
-    <property name="FILE_LOG_PATTERN" value="(%d{HH:mm:ss.SSS}) [%thread] %-5level %logger{36} - %msg%n"  />
-
-    <timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss"></timestamp>
-
-
-    <!--  Log File 날짜별로 형태로 남기기, append T/F에 따라 Overwrite할지 정할 수 있다. -->
-    <!--<appender name="FILE" class="ch.qos.logback.core.FileAppender"> -->
-    <!--    <file>logs/kdt_${bySecond}.log</file>-->
-    <!--    <append>false</append>-->
-    <!--    <encoder>-->
-    <!--        <pattern>${FILE_LOG_PATTERN}</pattern>-->
-    <!--    </encoder>-->
-    <!--</appender>-->
-    <!--  Log File 날짜별로 분할해서 파일 생성하기 형태로 남기기, rollingPolicy로 트리거를 정할 수 있따.  -->
-   <!-- <appender name="ROLLING_FILE" class="ch.qos.logback.core.FileAppender">-->
-   <!--     <file>logs/access.log</file>  시작일은 그냥 Access.log로 시작한다.-->
-      <!-- 시작일은 그냥 Access.log로 시작한다.-->
-   <!--     <rollingPolicy>  시작일이 지난 00시가 지난 이후부터는 파일 형태가 아래와 같은 형태로 생성된다. -->
-   <!--         <fileNamePattern>logs/access-%d{yyyy-MM-dd}.log</fileNamePattern>-->
-   <!--     </rollingPolicy>-->
-<!---->
-   <!--     <encoder>-->
-   <!--         <pattern>${FILE_LOG_PATTERN}</pattern>-->
-   <!--     </encoder>-->
-   <!-- </appender>-->
-   <!-- <logger name="org.prgrms.kdt" level="debug">-->
-   <!--     <appender-ref ref="ROLLING_FILE" />-->
-   <!-- </logger>-->
-    <!---->
-   <!--<logger name="org.prgrms.kdt" level="debug">-->
-   <!--    <appender-ref ref="FILE" />-->
-   <!--</logger> -->
-
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <!-- encoders are assigned the type
-             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
-        <encoder>
-            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
-        </encoder>
-    </appender>
-
-    <logger name="org.prgrms.kdt" level="debug" additivity="false">
-        <appender-ref ref="STDOUT" />
-    </logger>
-
-    <root level="warn">
-        <appender-ref ref="STDOUT" />
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+    <root level="WARN">
+        <appender-ref ref="CONSOLE" />
     </root>
+    <logger name="org.springframework.web" level="WARN"/>
 </configuration>
