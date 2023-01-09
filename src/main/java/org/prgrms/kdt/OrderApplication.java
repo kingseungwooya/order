@@ -22,9 +22,9 @@ public class OrderApplication {
 
         var applicationContext = SpringApplication.run(OrderApplication.class, args);
         var orderProperties = applicationContext.getBean(OrderProperties.class);
-        logger.warn("version -> {0}", orderProperties.getVersion());
-        logger.warn("minimumOrderAmount -> {0}", orderProperties.getMinimumOrderAmount());
-        logger.warn("supportVendors -> {0}", orderProperties.getDescription());
+        logger.warn("version -> {}", orderProperties.getVersion());
+        logger.warn("minimumOrderAmount -> {}", orderProperties.getMinimumOrderAmount());
+        logger.warn("supportVendors -> {}", orderProperties.getDescription());
 
     }
 
