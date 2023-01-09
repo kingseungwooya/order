@@ -13,6 +13,18 @@ public class Order {
     private Optional<Voucher> voucher;
     private OrderStatus orderStatus = OrderStatus.ACCEPTED;
 
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
+    }
+
+    public Optional<Voucher> getVoucher() {
+        return voucher;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
     public Order(UUID orderId, UUID customerID, List<OrderItem> orderItems, Voucher voucher) {
         this.orderId = orderId;
         this.customerID = customerID;
