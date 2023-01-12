@@ -1,6 +1,7 @@
 package org.prgrms.aoptest;
 
 import org.prgrms.kdt.AppConfiguration;
+import org.prgrms.kdt.aop.TrackTime;
 import org.prgrms.kdt.order.OrderItem;
 import org.prgrms.kdt.order.OrderService;
 import org.prgrms.kdt.order.OrderStatus;
@@ -22,7 +23,7 @@ import static org.hamcrest.Matchers.*;
 import static org.hamcrest.MatcherAssert.*;
 import static org.mockito.Mockito.*;
 
-@SpringJUnitConfig(classes = {AppConfiguration.class})
+@SpringJUnitConfig
 @ActiveProfiles("dev")
 public class AopTest {
 
@@ -39,7 +40,6 @@ public class AopTest {
     }
     @Autowired
     VoucherRepository voucherRepository;
-
 
     @Test
     @DisplayName("AOP TEST ")
